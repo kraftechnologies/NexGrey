@@ -1,10 +1,58 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+
+const navLinks = [
+  {
+    name: "Services",
+    href: "#services",
+    submenu: [
+      { name: "Digital Advertising", href: "#services", description: "Google, Meta & emerging platforms" },
+      { name: "SEO & Content", href: "#services", description: "Data-driven organic growth" },
+      { name: "Brand Identity", href: "#services", description: "Visual identity & messaging" },
+      { name: "Web Development", href: "#services", description: "High-performance websites" },
+      { name: "Growth Marketing", href: "#services", description: "Full-funnel strategies" },
+      { name: "Analytics & Insights", href: "#services", description: "Custom dashboards & tracking" },
+    ],
+  },
+  {
+    name: "Work",
+    href: "#work",
+    submenu: [
+      { name: "Case Studies", href: "#work", description: "In-depth project breakdowns" },
+      { name: "Portfolio", href: "#work", description: "Our best creative work" },
+      { name: "Industries", href: "#work", description: "Sectors we specialize in" },
+    ],
+  },
+  {
+    name: "Company",
+    href: "#about",
+    submenu: [
+      { name: "About Us", href: "#about", description: "Our story & mission" },
+      { name: "Team", href: "#about", description: "Meet the experts" },
+      { name: "Careers", href: "#", description: "Join our growing team" },
+      { name: "Press", href: "#", description: "News & media coverage" },
+    ],
+  },
+  {
+    name: "Resources",
+    href: "#",
+    submenu: [
+      { name: "Blog", href: "#", description: "Marketing insights & tips" },
+      { name: "Guides", href: "#", description: "Free downloadable resources" },
+      { name: "Webinars", href: "#", description: "Live & recorded sessions" },
+      { name: "Newsletter", href: "#", description: "Weekly industry updates" },
+    ],
+  },
+  { name: "Testimonials", href: "#testimonials" },
+  { name: "Contact", href: "#contact" },
+];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,81 +62,174 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Services", href: "#services" },
-    { name: "Work", href: "#work" },
-    { name: "About", href: "#about" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact", href: "#contact" },
-  ];
+  const handleMouseEnter = (name: string) => {
+    setActiveDropdown(name);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveDropdown(null);
+  };
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "glass py-4" : "bg-transparent py-6"
+        isScrolled ? "glass py-3 shadow-lg" : "bg-transparent py-5"
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-            <span className="text-primary-foreground font-bold text-xl">N</span>
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="relative">
+              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <span className="text-primary-foreground font-bold text-xl">N</span>
+              </div>
+              <div className="absolute -inset-1 bg-gradient-to-br from-primary to-secondary rounded-xl opacity-0 group-hover:opacity-30 blur-md transition-opacity duration-300" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl font-bold leading-tight">
+                Nex<span className="gradient-text">gro</span>
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
+                Digital Agency
+              </span>
+            </div>
+          </a>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <div
+                key={link.name}
+                className="relative"
+                onMouseEnter={() => link.submenu && handleMouseEnter(link.name)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <a
+                  href={link.href}
+                  className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-lg hover:bg-muted/50 ${
+                    activeDropdown === link.name ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.name}
+                  {link.submenu && (
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        activeDropdown === link.name ? "rotate-180" : ""
+                      }`}
+                    />
+                  )}
+                </a>
+
+                {/* Dropdown Menu */}
+                {link.submenu && (
+                  <div
+                    className={`absolute top-full left-0 pt-2 transition-all duration-300 ${
+                      activeDropdown === link.name
+                        ? "opacity-100 visible translate-y-0"
+                        : "opacity-0 invisible -translate-y-2"
+                    }`}
+                  >
+                    <div className="bg-card rounded-2xl shadow-2xl border border-border p-2 min-w-[280px]">
+                      {link.submenu.map((subItem, index) => (
+                        <a
+                          key={index}
+                          href={subItem.href}
+                          className="flex flex-col gap-0.5 px-4 py-3 rounded-xl hover:bg-muted transition-colors duration-200 group"
+                        >
+                          <span className="font-medium text-foreground group-hover:text-primary transition-colors">
+                            {subItem.name}
+                          </span>
+                          <span className="text-xs text-muted-foreground">
+                            {subItem.description}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
-          <span className="text-2xl font-bold">
-            Nex<span className="gradient-text">gro</span>
-          </span>
-        </a>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium relative group"
-            >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
+          {/* CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-3">
+            <Button variant="ghost" size="sm">
+              Sign In
+            </Button>
+            <Button variant="gradient" size="default">
+              Get Started
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden p-2 hover:bg-muted rounded-xl transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-
-        {/* CTA Button */}
-        <div className="hidden md:block">
-          <Button variant="gradient" size="default">
-            Get Started
-          </Button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 hover:bg-muted rounded-lg transition-colors"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 glass transition-all duration-300 ${
-          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        className={`lg:hidden fixed inset-x-0 top-full bg-background/95 backdrop-blur-xl border-b border-border transition-all duration-500 ${
+          isMobileMenuOpen ? "opacity-100 visible max-h-[80vh] overflow-y-auto" : "opacity-0 invisible max-h-0"
         }`}
       >
-        <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+        <div className="container mx-auto px-6 py-6">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-foreground hover:text-primary transition-colors duration-300 text-lg font-medium py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {link.name}
-            </a>
+            <div key={link.name} className="border-b border-border/50 last:border-0">
+              {link.submenu ? (
+                <div>
+                  <button
+                    onClick={() => setMobileActiveDropdown(mobileActiveDropdown === link.name ? null : link.name)}
+                    className="flex items-center justify-between w-full py-4 text-lg font-medium"
+                  >
+                    {link.name}
+                    <ChevronDown
+                      className={`w-5 h-5 transition-transform duration-300 ${
+                        mobileActiveDropdown === link.name ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      mobileActiveDropdown === link.name ? "max-h-96 pb-4" : "max-h-0"
+                    }`}
+                  >
+                    {link.submenu.map((subItem, index) => (
+                      <a
+                        key={index}
+                        href={subItem.href}
+                        className="block py-2 pl-4 text-muted-foreground hover:text-primary transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {subItem.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <a
+                  href={link.href}
+                  className="block py-4 text-lg font-medium hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              )}
+            </div>
           ))}
-          <Button variant="gradient" size="lg" className="mt-4">
-            Get Started
-          </Button>
+          <div className="flex flex-col gap-3 mt-6">
+            <Button variant="outline" size="lg" className="w-full">
+              Sign In
+            </Button>
+            <Button variant="gradient" size="lg" className="w-full">
+              Get Started
+            </Button>
+          </div>
         </div>
       </div>
     </nav>

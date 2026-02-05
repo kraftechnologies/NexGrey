@@ -186,27 +186,24 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Large Background Text - Full Width */}
-      <div className="relative border-t border-background/5 overflow-hidden">
-        <div className="py-8 md:py-12">
-          <div className="relative">
-            <h2 
-              className="text-[25vw] md:text-[20vw] font-bold leading-none tracking-tighter text-center select-none whitespace-nowrap"
-              style={{
-                color: 'hsl(0 0% 20%)',
-              }}
-            >
-              NEXGRO
-            </h2>
-            {/* Decorative Line */}
-            <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-          </div>
+      {/* Copyright Section with Background Text */}
+      <div className="relative border-t border-background/10 overflow-hidden">
+        {/* Large Background Text - Full Width Edge to Edge */}
+        <div className="absolute inset-x-0 bottom-0 pointer-events-none overflow-hidden">
+          <h2 
+            className="text-[30vw] font-bold leading-none tracking-tighter text-center select-none whitespace-nowrap translate-y-[35%]"
+            style={{
+              color: 'hsl(0 0% 15%)',
+            }}
+          >
+            NEXGRO
+          </h2>
+          {/* Bottom blur overlay */}
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-foreground via-foreground/80 to-transparent" />
         </div>
-      </div>
 
-      {/* Copyright Section */}
-      <div className="border-t border-background/10">
-        <div className="container mx-auto px-6 py-6">
+        {/* Copyright Content */}
+        <div className="relative z-10 container mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="text-sm text-background/40">
               © 2024 Nexgro. All rights reserved. Crafted with passion.

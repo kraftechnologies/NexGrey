@@ -1,32 +1,34 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
+
 const navLinks = [{
   name: "Services",
-  href: "#services",
+  href: "/services",
   submenu: [{
     name: "Digital Advertising",
-    href: "#services",
+    href: "/services",
     description: "Google, Meta & emerging platforms"
   }, {
     name: "SEO & Content",
-    href: "#services",
+    href: "/services",
     description: "Data-driven organic growth"
   }, {
     name: "Brand Identity",
-    href: "#services",
+    href: "/services",
     description: "Visual identity & messaging"
   }, {
     name: "Web Development",
-    href: "#services",
+    href: "/services",
     description: "High-performance websites"
   }, {
     name: "Growth Marketing",
-    href: "#services",
+    href: "/services",
     description: "Full-funnel strategies"
   }, {
     name: "Analytics & Insights",
-    href: "#services",
+    href: "/services",
     description: "Custom dashboards & tracking"
   }]
 }, {
@@ -47,50 +49,50 @@ const navLinks = [{
   }]
 }, {
   name: "Company",
-  href: "#about",
+  href: "/about",
   submenu: [{
     name: "About Us",
-    href: "#about",
+    href: "/about",
     description: "Our story & mission"
   }, {
     name: "Team",
-    href: "#about",
+    href: "/about",
     description: "Meet the experts"
   }, {
     name: "Careers",
-    href: "#",
+    href: "/about",
     description: "Join our growing team"
   }, {
     name: "Press",
-    href: "#",
+    href: "/about",
     description: "News & media coverage"
   }]
 }, {
   name: "Resources",
-  href: "#",
+  href: "/blog",
   submenu: [{
     name: "Blog",
-    href: "#",
+    href: "/blog",
     description: "Marketing insights & tips"
   }, {
     name: "Guides",
-    href: "#",
+    href: "/blog",
     description: "Free downloadable resources"
   }, {
     name: "Webinars",
-    href: "#",
+    href: "/blog",
     description: "Live & recorded sessions"
   }, {
     name: "Newsletter",
-    href: "#",
+    href: "/blog",
     description: "Weekly industry updates"
   }]
 }, {
   name: "Testimonials",
-  href: "#testimonials"
+  href: "/#testimonials"
 }, {
   name: "Contact",
-  href: "#contact"
+  href: "/#contact"
 }];
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -114,7 +116,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3 group">
             <div className="relative">
               
               
@@ -126,7 +128,7 @@ const Navbar = () => {
                 ​ 
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
@@ -152,11 +154,8 @@ const Navbar = () => {
               </div>)}
           </div>
 
-          {/* CTA Buttons */}
+          {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="ghost" size="sm">
-              Sign In
-            </Button>
             <Button variant="gradient" size="default">
               Get Started
             </Button>
@@ -188,9 +187,6 @@ const Navbar = () => {
                 </a>}
             </div>)}
           <div className="flex flex-col gap-3 mt-6">
-            <Button variant="outline" size="lg" className="w-full">
-              Sign In
-            </Button>
             <Button variant="gradient" size="lg" className="w-full">
               Get Started
             </Button>

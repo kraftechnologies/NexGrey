@@ -116,17 +116,14 @@ const Navbar = () => {
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
             <div className="relative">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                <span className="text-primary-foreground font-bold text-xl">N</span>
-              </div>
+              
               
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold leading-tight">
-                Nex<span className="gradient-text">gro</span>
+              <span className="leading-tight font-extrabold text-3xl font-sans text-center">NEXGRO<span className="gradient-text">gro</span>
               </span>
               <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
-                Digital Agency
+                ​ 
               </span>
             </div>
           </a>

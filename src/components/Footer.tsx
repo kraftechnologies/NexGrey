@@ -183,8 +183,31 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Bottom Section */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pt-8">
+        </div>
+      </div>
+
+      {/* Large Background Text - Full Width */}
+      <div className="relative border-t border-background/5 overflow-hidden">
+        <div className="py-8 md:py-12">
+          <div className="relative">
+            <h2 
+              className="text-[25vw] md:text-[20vw] font-bold leading-none tracking-tighter text-center select-none whitespace-nowrap"
+              style={{
+                color: 'hsl(0 0% 20%)',
+              }}
+            >
+              NEXGRO
+            </h2>
+            {/* Decorative Line */}
+            <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright Section */}
+      <div className="border-t border-background/10">
+        <div className="container mx-auto px-6 py-6">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="text-sm text-background/40">
               © 2024 Nexgro. All rights reserved. Crafted with passion.
             </p>
@@ -202,23 +225,6 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Large Background Text */}
-      <div className="relative border-t border-background/5">
-        <div className="container mx-auto px-6 py-8 md:py-12">
-          <div className="relative overflow-hidden">
-            <h2 
-              className="text-[20vw] font-bold leading-none tracking-tighter text-center select-none text-muted-foreground/20"
-            >
-              NEXGRO
-            </h2>
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground via-transparent to-transparent pointer-events-none" />
-            {/* Decorative Elements */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
           </div>
         </div>
       </div>

@@ -211,13 +211,7 @@ const Footer = () => {
         <div className="container mx-auto px-6 py-8 md:py-12">
           <div className="relative overflow-hidden">
             <h2 
-              className="text-[15vw] md:text-[12vw] lg:text-[10vw] font-bold leading-none tracking-tighter text-center select-none"
-              style={{
-                background: 'linear-gradient(180deg, hsl(var(--background) / 0.15) 0%, hsl(var(--background) / 0.03) 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
+              className="text-[20vw] font-bold leading-none tracking-tighter text-center select-none text-muted-foreground/20"
             >
               NEXGRO
             </h2>

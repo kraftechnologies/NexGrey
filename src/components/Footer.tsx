@@ -186,20 +186,25 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Large Background Text - Full Width */}
-      <div className="relative border-t border-background/5 overflow-hidden">
-        <div className="py-8 md:py-12">
+      {/* Large Background Text - Full Width Edge to Edge */}
+      <div className="relative border-t border-background/5 overflow-hidden w-screen -ml-[50vw] left-1/2 relative">
+        <div className="py-4 md:py-8">
           <div className="relative">
             <h2 
-              className="text-[25vw] md:text-[20vw] font-bold leading-none tracking-tighter text-center select-none whitespace-nowrap"
+              className="text-[32vw] md:text-[28vw] font-bold leading-none tracking-tighter text-center select-none whitespace-nowrap w-full"
               style={{
                 color: 'hsl(0 0% 20%)',
               }}
             >
               NEXGRO
             </h2>
-            {/* Decorative Line */}
-            <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+            {/* Bottom Blur Gradient Overlay */}
+            <div 
+              className="absolute bottom-0 left-0 right-0 h-24 md:h-32"
+              style={{
+                background: 'linear-gradient(to top, hsl(var(--foreground)) 0%, hsl(var(--foreground)) 20%, transparent 100%)',
+              }}
+            />
           </div>
         </div>
       </div>

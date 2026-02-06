@@ -187,11 +187,11 @@ const Footer = () => {
       </div>
 
       {/* Large Background Text - Full Width Edge to Edge */}
-      <div className="relative border-t border-background/5 overflow-hidden w-screen -ml-[50vw] left-1/2 relative">
+      <div className="relative border-t border-background/5 w-full">
         <div className="py-4 md:py-8">
-          <div className="relative">
+          <div className="relative flex items-center justify-center">
             <h2 
-              className="text-[32vw] md:text-[28vw] font-bold leading-none tracking-tighter text-center select-none whitespace-nowrap w-full"
+              className="text-[18vw] md:text-[16vw] font-bold leading-none tracking-tighter text-center select-none"
               style={{
                 color: 'hsl(0 0% 20%)',
               }}
@@ -200,9 +200,9 @@ const Footer = () => {
             </h2>
             {/* Bottom Blur Gradient Overlay */}
             <div 
-              className="absolute bottom-0 left-0 right-0 h-24 md:h-32"
+              className="absolute bottom-0 left-0 right-0 h-20 md:h-28"
               style={{
-                background: 'linear-gradient(to top, hsl(var(--foreground)) 0%, hsl(var(--foreground)) 20%, transparent 100%)',
+                background: 'linear-gradient(to top, hsl(var(--foreground)) 0%, hsl(var(--foreground)) 30%, transparent 100%)',
               }}
             />
           </div>

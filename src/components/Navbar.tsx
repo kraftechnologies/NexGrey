@@ -60,7 +60,7 @@ const navLinks = [{
     description: "Meet the experts"
   }, {
     name: "Careers",
-    href: "/about",
+    href: "/careers",
     description: "Join our growing team"
   }, {
     name: "Press",

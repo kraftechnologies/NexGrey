@@ -1,7 +1,36 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, Loader2 } from "lucide-react";
+import { executeRecaptcha } from "@/hooks/useRecaptcha";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const token = await executeRecaptcha("contact_form");
+      console.log("reCAPTCHA token:", token);
+      // TODO: Send form data + token to your backend
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you within 24 hours.",
+      });
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-32 relative overflow-hidden">
       {/* Background Gradient */}
@@ -54,7 +83,7 @@ const Contact = () => {
           <div className="bg-card rounded-3xl p-8 md:p-10 shadow-xl border border-border">
             <h3 className="text-2xl font-bold mb-6">Start Your Project</h3>
             
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">First Name</label>
@@ -101,9 +130,18 @@ const Contact = () => {
                 />
               </div>
 
-              <Button variant="gradient" size="lg" className="w-full group">
-                Send Message
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              <Button variant="gradient" size="lg" className="w-full group" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                  </>
+                )}
               </Button>
 
               <p className="text-sm text-muted-foreground text-center">

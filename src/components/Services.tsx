@@ -11,32 +11,32 @@ import {
 const services = [
   {
     icon: Megaphone,
-    title: "Digital Advertising",
-    description: "Strategic paid campaigns across Google, Meta, and emerging platforms that maximize ROI and drive qualified traffic.",
+    title: "Cognitive Advertising",
+    description: "Stop burning budget. We use predictive modeling and real-time bid automation to find your highest-value customers before they even click.",
     color: "from-primary to-orange-light",
   },
   {
     icon: Search,
-    title: "SEO & Content",
-    description: "Data-driven SEO strategies paired with compelling content that ranks, engages, and converts your target audience.",
+    title: "AIO (AI-Optimization) & Content",
+    description: "Traditional SEO is dead. We optimize your brand for the new era of 'Answer Engines' (ChatGPT, Perplexity, Gemini) while crafting human-first stories that convert.",
     color: "from-secondary to-blue-light",
   },
   {
     icon: PenTool,
-    title: "Brand Identity",
-    description: "Crafting memorable brand experiences through visual identity, messaging, and cohesive design systems.",
+    title: "Neural Brand Systems",
+    description: "We craft flexible, AI-ready visual identities and messaging frameworks that stay consistent across every digital touchpoint.",
     color: "from-primary to-secondary",
   },
   {
     icon: BarChart3,
-    title: "Analytics & Insights",
-    description: "Transform raw data into actionable insights with custom dashboards and performance tracking.",
+    title: "Algorithmic Growth",
+    description: "Full-funnel scaling that utilizes machine learning to identify bottlenecks in your sales process and fix them automatically.",
     color: "from-orange-light to-primary",
   },
   {
     icon: Globe,
-    title: "Web Development",
-    description: "High-performance, conversion-optimized websites built with cutting-edge technology and seamless UX.",
+    title: "Next-Gen Engineering",
+    description: "High-performance web applications built on modern stacks (Next.js/React) that are light, fast, and optimized for AI-driven UX.",
     color: "from-blue-light to-secondary",
   },
   {

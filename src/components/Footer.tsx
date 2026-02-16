@@ -1,5 +1,7 @@
 import { ArrowUpRight, Facebook, Instagram, Linkedin, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react";
 import logoLight from "@/assets/logo-light.png";
+import { useState } from "react";
+import CalModal from "./CalModal";
 
 const footerLinks = {
   services: [
@@ -27,8 +29,8 @@ const footerLinks = {
     { name: "Newsletter", href: "#" },
   ],
   legal: [
-    { name: "Privacy Policy", href: "#" },
-    { name: "Terms of Service", href: "#" },
+    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Terms of Service", href: "/terms" },
     { name: "Cookie Policy", href: "#" },
     { name: "GDPR", href: "#" },
   ],
@@ -43,8 +45,12 @@ const socialLinks = [
 ];
 
 const Footer = () => {
+  const [isCalOpen, setIsCalOpen] = useState(false);
+
   return (
-    <footer className="bg-foreground text-background relative overflow-hidden">
+    <>
+      <CalModal isOpen={isCalOpen} onClose={() => setIsCalOpen(false)} />
+      <footer className="bg-foreground text-background relative overflow-hidden">
       {/* Main Footer Content */}
       <div className="relative z-10 pt-24 pb-12">
         <div className="container mx-auto px-6">
@@ -67,8 +73,8 @@ const Footer = () => {
                 <ArrowUpRight className="w-5 h-5" />
               </a>
               <a
-                href="#"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-background/20 text-background font-semibold rounded-xl hover:bg-background/10 transition-all duration-300"
+                onClick={() => setIsCalOpen(true)}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-background/20 text-background font-semibold rounded-xl hover:bg-background/10 transition-all duration-300 cursor-pointer"
               >
                 Schedule a Call
               </a>
@@ -187,7 +193,7 @@ const Footer = () => {
                 color: 'hsl(0 0% 20%)',
               }}
             >
-              NEXGRO
+              NEXGREY
             </h2>
             {/* Bottom Blur Gradient Overlay */}
             <div 
@@ -225,6 +231,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 };
 

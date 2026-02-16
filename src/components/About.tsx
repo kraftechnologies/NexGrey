@@ -21,7 +21,7 @@ const About = () => {
           {/* Left Content */}
           <div>
             <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
-              Why Choose Nexgro
+              Why Choose NexGrey
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               We're Not Just an{" "}

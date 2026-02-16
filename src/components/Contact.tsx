@@ -3,24 +3,64 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, MapPin, Phone, Loader2 } from "lucide-react";
 import { executeRecaptcha } from "@/hooks/useRecaptcha";
 import { useToast } from "@/hooks/use-toast";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    mobileNumber: "",
+    company: "",
+    message: "",
+  });
   const { toast } = useToast();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
       const token = await executeRecaptcha("contact_form");
-      console.log("reCAPTCHA token:", token);
-      // TODO: Send form data + token to your backend
+      
+      // Add form data to Firestore
+      await addDoc(collection(db, "contact_submissions"), {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        mobileNumber: formData.mobileNumber,
+        company: formData.company,
+        message: formData.message,
+        recaptchaToken: token,
+        timestamp: serverTimestamp(),
+      });
+
       toast({
         title: "Message sent!",
         description: "We'll get back to you within 24 hours.",
       });
+      
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobileNumber: "",
+        company: "",
+        message: "",
+      });
       (e.target as HTMLFormElement).reset();
     } catch (error) {
+      console.error("Error submitting form:", error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
@@ -60,9 +100,9 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="space-y-6">
               {[
-                { icon: Mail, label: "Email Us", value: "hello@nexgro.com" },
-                { icon: Phone, label: "Call Us", value: "+1 (555) 123-4567" },
-                { icon: MapPin, label: "Visit Us", value: "123 Marketing Ave, NYC" },
+                { icon: Mail, label: "Email Us", value: "info@nexgrey.com" },
+                { icon: Phone, label: "Call Us", value: "+918839800059" },
+                { icon: MapPin, label: "Visit Us", value: "400-A, 4th Floor, 12 Ajit Singh House, Yusuf Sarai Commercial Complex, New Delhi 110016, Near Green Park Metro Station Exit-2" },
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 group cursor-pointer">
                   <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
@@ -89,6 +129,10 @@ const Contact = () => {
                   <label className="block text-sm font-medium mb-2">First Name</label>
                   <input
                     type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
                     placeholder="John"
                   />
@@ -97,25 +141,51 @@ const Contact = () => {
                   <label className="block text-sm font-medium mb-2">Last Name</label>
                   <input
                     type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
                     placeholder="Doe"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
-                <input
-                  type="email"
-                  className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
-                  placeholder="john@company.com"
-                />
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                    placeholder="john@company.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Mobile Number</label>
+                  <input
+                    type="tel"
+                    name="mobileNumber"
+                    value={formData.mobileNumber}
+                    onChange={handleChange}
+                    required
+                    pattern="[0-9+\-\s]{10,}"
+                    className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                    placeholder="+91 98765 43210"
+                  />
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium mb-2">Company</label>
                 <input
                   type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
                   placeholder="Your Company"
                 />
@@ -124,7 +194,11 @@ const Contact = () => {
               <div>
                 <label className="block text-sm font-medium mb-2">Message</label>
                 <textarea
+                  name="message"
                   rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none"
                   placeholder="Tell us about your project..."
                 />
@@ -146,7 +220,8 @@ const Contact = () => {
 
               <p className="text-sm text-muted-foreground text-center">
                 By submitting, you agree to our{" "}
-                <a href="#" className="text-primary hover:underline">Privacy Policy</a>.
+                <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a> and{" "}
+                <a href="/terms" className="text-primary hover:underline">Terms of Service</a>.
               </p>
             </form>
           </div>

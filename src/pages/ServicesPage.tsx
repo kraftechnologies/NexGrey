@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, Check, Zap, Target, TrendingUp, Palette, Code, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import CalModal from "@/components/CalModal";
 
 const services = [
   {
@@ -49,8 +51,12 @@ const services = [
 ];
 
 const ServicesPage = () => {
+  const [isCalOpen, setIsCalOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <CalModal isOpen={isCalOpen} onClose={() => setIsCalOpen(false)} />
+      <div className="min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section */}
@@ -126,7 +132,7 @@ const ServicesPage = () => {
           <p className="text-background/60 mb-8 max-w-xl mx-auto">
             Let's discuss how our services can help you achieve your business goals.
           </p>
-          <Button variant="gradient" size="lg">
+          <Button variant="gradient" size="lg" onClick={() => setIsCalOpen(true)}>
             Schedule a Consultation
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
@@ -135,6 +141,7 @@ const ServicesPage = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

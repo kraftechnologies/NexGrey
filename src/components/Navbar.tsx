@@ -34,18 +34,18 @@ const navLinks = [{
   }]
 }, {
   name: "Work",
-  href: "#work",
+  href: "/portfolio",
   submenu: [{
     name: "Case Studies",
-    href: "#work",
+    href: "/case-studies",
     description: "In-depth project breakdowns"
   }, {
     name: "Portfolio",
-    href: "#work",
+    href: "/portfolio",
     description: "Our best creative work"
   }, {
     name: "Industries",
-    href: "#work",
+    href: "/industries",
     description: "Sectors we specialize in"
   }]
 }, {
@@ -57,7 +57,7 @@ const navLinks = [{
     description: "Our story & mission"
   }, {
     name: "Team",
-    href: "/about",
+    href: "/team",
     description: "Meet the experts"
   }, {
     name: "Careers",
@@ -65,7 +65,7 @@ const navLinks = [{
     description: "Join our growing team"
   }, {
     name: "Press",
-    href: "/about",
+    href: "/press",
     description: "News & media coverage"
   }]
 }, {
@@ -77,15 +77,15 @@ const navLinks = [{
     description: "Marketing insights & tips"
   }, {
     name: "Guides",
-    href: "/blog",
+    href: "/guides",
     description: "Free downloadable resources"
   }, {
     name: "Webinars",
-    href: "/blog",
+    href: "/webinars",
     description: "Live & recorded sessions"
   }, {
     name: "Newsletter",
-    href: "/blog",
+    href: "/newsletter",
     description: "Weekly industry updates"
   }]
 }, {
@@ -93,7 +93,7 @@ const navLinks = [{
   href: "/#testimonials"
 }, {
   name: "Contact",
-  href: "/#contact"
+  href: "/contact"
 }];
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -148,7 +148,7 @@ const Navbar = () => {
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-3">
             <Button variant="gradient" size="default">
-              Get Started
+              +91 8839800059
             </Button>
           </div>
 
@@ -179,7 +179,7 @@ const Navbar = () => {
             </div>)}
           <div className="flex flex-col gap-3 mt-6">
             <Button variant="gradient" size="lg" className="w-full">
-              Get Started
+              +91 8839800059
             </Button>
           </div>
         </div>

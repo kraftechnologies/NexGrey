@@ -31,7 +31,7 @@ const Hero = () => {
           {/* Badge */}
           <div className="animate-fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-muted/50 backdrop-blur-sm mb-8">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm text-muted-foreground">Now Accepting New Clients for 2024</span>
+            <span className="text-sm text-muted-foreground">Now Onboarding Strategic Partners for 2026</span>
           </div>
 
           {/* Main Heading */}
@@ -62,14 +62,13 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p className="animate-fade-up-delayed text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 text-balance">
-            Nexgro is a premium digital marketing agency that transforms brands 
-            through strategic creativity, cutting-edge technology, and data-driven results.
+            NexGrey is an AI-augmented digital collective. We fuse human intuition with machine precision to transform ambitious brands into market leaders through high-velocity creativity and predictive data.
           </p>
 
           {/* CTA Buttons */}
           <div className="animate-fade-up flex flex-col sm:flex-row items-center justify-center gap-4" style={{ animationDelay: "0.4s" }}>
             <Button variant="hero" size="xl" className="group">
-              Start Your Project
+              Start Your Evolution
               <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
             <Button variant="heroOutline" size="xl" className="group">
@@ -81,10 +80,10 @@ const Hero = () => {
           {/* Stats */}
           <div className="animate-fade-up mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12" style={{ animationDelay: "0.6s" }}>
             {[
-              { value: "250+", label: "Projects Delivered" },
+              { value: "50+", label: "Projects Delivered" },
               { value: "98%", label: "Client Satisfaction" },
-              { value: "15+", label: "Industry Awards" },
-              { value: "$50M+", label: "Revenue Generated" },
+              { value: "5+", label: "Industry Awards" },
+              { value: "₹150+", label: "Revenue Generated" },
             ].map((stat, index) => (
               <div key={index} className="text-center group">
                 <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 transition-transform duration-300 group-hover:scale-110">

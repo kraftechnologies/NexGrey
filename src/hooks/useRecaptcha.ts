@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-const RECAPTCHA_SITE_KEY = "YOUR_RECAPTCHA_SITE_KEY"; // Replace with your site key
+const RECAPTCHA_SITE_KEY = "6LdLnm0sAAAAAPdRCGl-US67kJf0jaWiDMwVZkof"; // Site key from index.html
 
 export const executeRecaptcha = (action: string): Promise<string> => {
   return new Promise((resolve, reject) => {

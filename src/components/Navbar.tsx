@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import logoDark from "@/assets/logo-dark.png";
 
 const navLinks = [{
   name: "Services",
@@ -117,17 +118,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              
-              
-            </div>
-            <div className="flex flex-col">
-              <span className="leading-tight font-extrabold text-3xl font-sans text-center">NEXGRO<span className="gradient-text">gro</span>
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
-                ​ 
-              </span>
-            </div>
+            <img src={logoDark} alt="Nexgro" className="h-8 md:h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

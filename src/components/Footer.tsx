@@ -1,4 +1,5 @@
 import { ArrowUpRight, Facebook, Instagram, Linkedin, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import logoLight from "@/assets/logo-light.png";
 
 const footerLinks = {
   services: [
@@ -79,17 +80,7 @@ const Footer = () => {
             {/* Brand Column */}
             <div className="col-span-2">
               <a href="#" className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-2xl">N</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-2xl font-bold">
-                    Nex<span className="text-primary">gro</span>
-                  </span>
-                  <span className="text-[10px] uppercase tracking-[0.15em] text-background/50">
-                    Digital Agency
-                  </span>
-                </div>
+                <img src={logoLight} alt="Nexgro" className="h-10 w-auto" />
               </a>
               <p className="text-background/60 mb-6 max-w-xs leading-relaxed">
                 Transforming brands through strategic creativity, cutting-edge technology, 

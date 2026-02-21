@@ -9,27 +9,27 @@ const navLinks = [{
   href: "/services",
   submenu: [{
     name: "Digital Advertising",
-    href: "/services",
+    href: "/services/digital-advertising",
     description: "Google, Meta & emerging platforms"
   }, {
     name: "SEO & Content",
-    href: "/services",
+    href: "/services/seo-content",
     description: "Data-driven organic growth"
   }, {
     name: "Brand Identity",
-    href: "/services",
+    href: "/services/brand-identity",
     description: "Visual identity & messaging"
   }, {
     name: "Web Development",
-    href: "/services",
+    href: "/services/web-development",
     description: "High-performance websites"
   }, {
     name: "Growth Marketing",
-    href: "/services",
+    href: "/services/growth-marketing",
     description: "Full-funnel strategies"
   }, {
     name: "Analytics & Insights",
-    href: "/services",
+    href: "/services/analytics-insights",
     description: "Custom dashboards & tracking"
   }]
 }, {
@@ -90,7 +90,7 @@ const navLinks = [{
   }]
 }, {
   name: "Testimonials",
-  href: "/#testimonials"
+  href: "/testimonials"
 }, {
   name: "Contact",
   href: "/contact"
@@ -160,7 +160,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden fixed inset-x-0 top-full bg-background/95 backdrop-blur-xl border-b border-border transition-all duration-500 ${isMobileMenuOpen ? "opacity-100 visible max-h-[80vh] overflow-y-auto" : "opacity-0 invisible max-h-0"}`}>
+      <div className={`lg:hidden absolute inset-x-0 top-full bg-background/95 backdrop-blur-xl border-b border-border transition-all duration-500 ${isMobileMenuOpen ? "opacity-100 visible max-h-[80vh] overflow-y-auto" : "opacity-0 invisible max-h-0"}`}>
         <div className="container mx-auto px-6 py-6">
           {navLinks.map(link => <div key={link.name} className="border-b border-border/50 last:border-0">
               {link.submenu ? <div>

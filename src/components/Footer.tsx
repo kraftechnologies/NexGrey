@@ -66,7 +66,7 @@ const Footer = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/25"
               >
                 Start a Project
@@ -97,15 +97,15 @@ const Footer = () => {
               <div className="space-y-3">
                 <a href="mailto:hello@nexgro.com" className="flex items-center gap-3 text-background/60 hover:text-primary transition-colors group">
                   <Mail className="w-4 h-4" />
-                  <span className="text-sm">hello@nexgro.com</span>
+                  <span className="text-sm">info@nexgrey.com</span>
                 </a>
                 <a href="tel:+15551234567" className="flex items-center gap-3 text-background/60 hover:text-primary transition-colors group">
                   <Phone className="w-4 h-4" />
-                  <span className="text-sm">+1 (555) 123-4567</span>
+                  <span className="text-sm">+91 8839800059</span>
                 </a>
                 <div className="flex items-center gap-3 text-background/60">
                   <MapPin className="w-4 h-4" />
-                  <span className="text-sm">New York, NY</span>
+                  <span className="text-sm">400-A, 4th Floor, 12 Ajit Singh House, Yusuf Sarai Commercial Complex, New Delhi 110016</span>
                 </div>
               </div>
             </div>
@@ -184,22 +184,23 @@ const Footer = () => {
       </div>
 
       {/* Large Background Text - Full Width Edge to Edge */}
-      <div className="relative border-t border-background/5 w-full">
-        <div className="py-4 md:py-8">
+      <div className="relative border-t border-background/5 w-screen">
+        <div className="py-0">
           <div className="relative flex items-center justify-center">
-            <h2 
-              className="text-[18vw] md:text-[16vw] font-bold leading-none tracking-tighter text-center select-none"
+            <h2
+              className="block w-full m-0 p-0 text-[18vw] md:text-[16vw] font-bold leading-none tracking-tighter text-center select-none"
               style={{
-                color: 'hsl(0 0% 20%)',
+                color: "#ffffff",
               }}
             >
-              NEXGREY
+              NEX<span style={{ color: "#ef7222" }}>G</span>REY
             </h2>
             {/* Bottom Blur Gradient Overlay */}
-            <div 
+            <div
               className="absolute bottom-0 left-0 right-0 h-20 md:h-28"
               style={{
-                background: 'linear-gradient(to top, hsl(var(--foreground)) 0%, hsl(var(--foreground)) 30%, transparent 100%)',
+                background:
+                  "linear-gradient(to top, hsl(var(--foreground)) 0%, hsl(var(--foreground)) 30%, transparent 100%)",
               }}
             />
           </div>

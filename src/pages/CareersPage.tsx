@@ -23,6 +23,7 @@ import {
   X
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const jobOpenings = [
   {
@@ -528,9 +529,11 @@ const CareersPage = () => {
             We're always looking for talented people. Send us your resume and we'll reach out 
             when a position that matches your skills opens up.
           </p>
-          <Button variant="gradient" size="lg">
-            Send Your Resume
-            <ArrowRight className="w-4 h-4 ml-2" />
+          <Button asChild variant="gradient" size="lg">
+            <Link to="mailto:info@nexgrey.com?subject=Job Application - Resume Submission" className="flex items-center justify-center gap-2">
+              Send Your Resume
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
           </Button>
         </div>
       </section>

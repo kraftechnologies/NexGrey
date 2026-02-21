@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, Check, Zap, Target, TrendingUp, Palette, Code, BarChart3 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import CalModal from "@/components/CalModal";
@@ -113,10 +114,72 @@ const ServicesPage = () => {
                   ))}
                 </ul>
                 
-                <Button variant="ghost" className="group/btn">
-                  Learn More
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                </Button>
+                {service.title === "Digital Advertising" ? (
+                  <Button variant="ghost" className="group/btn" asChild>
+                    <Link
+                      to="/services/digital-advertising"
+                      className="flex items-center"
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                ) : service.title === "SEO & Content Marketing" ? (
+                  <Button variant="ghost" className="group/btn" asChild>
+                    <Link
+                      to="/services/seo-content"
+                      className="flex items-center"
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                ) : service.title === "Brand Identity Design" ? (
+                  <Button variant="ghost" className="group/btn" asChild>
+                    <Link
+                      to="/services/brand-identity"
+                      className="flex items-center"
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                ) : service.title === "Web Development" ? (
+                  <Button variant="ghost" className="group/btn" asChild>
+                    <Link
+                      to="/services/web-development"
+                      className="flex items-center"
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                ) : service.title === "Growth Marketing" ? (
+                  <Button variant="ghost" className="group/btn" asChild>
+                    <Link
+                      to="/services/growth-marketing"
+                      className="flex items-center"
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                ) : service.title === "Analytics & Insights" ? (
+                  <Button variant="ghost" className="group/btn" asChild>
+                    <Link
+                      to="/services/analytics-insights"
+                      className="flex items-center"
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button variant="ghost" className="group/btn">
+                    Learn More
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                )}
               </div>
             ))}
           </div>
@@ -124,12 +187,12 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-foreground">
+      <section className="py-20 bg-muted/100">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-background mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-background/60 mb-8 max-w-xl mx-auto">
+          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
             Let's discuss how our services can help you achieve your business goals.
           </p>
           <Button variant="gradient" size="lg" onClick={() => setIsCalOpen(true)}>

@@ -5,6 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import ServicesPage from "./pages/ServicesPage";
+import DigitalAdvertisingPage from "./pages/DigitalAdvertisingPage";
+import SEOContentPage from "./pages/SEOContentPage";
+import BrandIdentityPage from "./pages/BrandIdentityPage";
 import AboutPage from "./pages/AboutPage";
 import BlogPage from "./pages/BlogPage";
 import CareersPage from "./pages/CareersPage";
@@ -19,12 +22,15 @@ import GuidesPage from "./pages/GuidesPage";
 import WebinarsPage from "./pages/WebinarsPage";
 import NewsletterPage from "./pages/NewsletterPage";
 import ContactUsPage from "./pages/ContactUsPage";
+import TestimonialsPage from "./pages/TestimonialsPage";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
-
+import WebDevelopmentPage from "./pages/WebDevelopmentPage";
+import GrowthMarketingPage from "./pages/GrowthMarketingPage";
+import AnalyticsInsightsPage from "./pages/AnalyticsInsightsPage";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -37,10 +43,17 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/digital-advertising" element={<DigitalAdvertisingPage />} />
+          <Route path="/services/seo-content" element={<SEOContentPage />} />
+          <Route path="/services/brand-identity" element={<BrandIdentityPage />} />
+          <Route path="/services/web-development" element={<WebDevelopmentPage />} />
+          <Route path="/services/growth-marketing" element={<GrowthMarketingPage />} />
+          <Route path="/services/analytics-insights" element={<AnalyticsInsightsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/contact" element={<ContactUsPage />} />
+          <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />

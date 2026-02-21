@@ -2,6 +2,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, Calendar, Clock, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const webinars = [
   {
@@ -67,6 +70,19 @@ const webinars = [
 ];
 
 const WebinarsPage = () => {
+  const { toast } = useToast();
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    toast({
+      title: "Subscribed!",
+      description: "Thank you for subscribing to our newsletter.",
+    });
+    setEmail("");
+  };
+
   return (
     <>
       <Navbar />
@@ -175,14 +191,17 @@ const WebinarsPage = () => {
               <p className="text-xl text-muted-foreground mb-8">
                 Subscribe to our newsletter to get webinar invitations and exclusive marketing tips.
               </p>
-              <div className="flex gap-3 max-w-md mx-auto">
-                <input
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-lg bg-muted border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 py-6 rounded-xl"
+                  required
                 />
-                <Button variant="gradient">Subscribe</Button>
-              </div>
+                <Button type="submit" variant="gradient">Subscribe</Button>
+              </form>
             </div>
           </div>
         </section>

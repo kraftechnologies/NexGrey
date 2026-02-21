@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, Linkedin, Twitter, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const teamMembers = [
   {
@@ -147,9 +148,14 @@ const TeamPage = () => {
               <p className="text-xl text-muted-foreground mb-8">
                 We're always looking for talented individuals to join our growing team.
               </p>
-              <Button variant="gradient" size="lg">
-                View Open Positions
-                <ArrowRight className="w-5 h-5 ml-2" />
+              <Button asChild variant="gradient" size="lg">
+                <Link
+                  to="/careers"
+                  className="flex items-center justify-center gap-2"
+                >
+                  View Open Positions
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
               </Button>
             </div>
           </div>

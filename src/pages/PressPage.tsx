@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, Newspaper } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const pressReleases = [
   {
@@ -67,7 +68,7 @@ const PressPage = () => {
           
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl mx-auto text-center mb-12">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">Press & Media</h1>
+              <h1 className="text-5xl md:text-6xl pt-16 font-bold mb-6">Press & Media</h1>
               <p className="text-xl text-muted-foreground">
                 Latest news and media coverage about NexGrey and the digital marketing industry.
               </p>
@@ -151,9 +152,11 @@ const PressPage = () => {
               <p className="text-xl text-muted-foreground mb-8">
                 Get in touch with our PR team for interviews, quotes, or media requests.
               </p>
-              <Button variant="gradient" size="lg">
-                Contact PR Team
-                <ArrowRight className="w-5 h-5 ml-2" />
+              <Button asChild variant="gradient" size="lg">
+                <Link to="/contact" className="flex items-center justify-center gap-2">
+                  Contact PR Team
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
               </Button>
             </div>
           </div>
